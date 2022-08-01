@@ -456,4 +456,5 @@ with prev;
 
   # aliases
   cjson = prev.lua-cjson;
+  protobuf = prev.lua-protobuf;
 }
