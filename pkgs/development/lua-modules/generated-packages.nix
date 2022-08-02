@@ -2172,7 +2172,7 @@ buildLuarocksPackage {
 }) {};
 
 luaunit = callPackage({ buildLuarocksPackage, luaOlder, luaAtLeast
-, fetchurl, lua, lua
+, fetchurl, lua
 }:
 buildLuarocksPackage {
   pname = "luaunit";
