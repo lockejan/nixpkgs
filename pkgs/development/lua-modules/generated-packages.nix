@@ -2575,6 +2575,7 @@ buildLuarocksPackage {
   meta = {
     homepage = "https://github.com/pkulchenko/serpent";
     description = "Lua serializer and pretty printer";
+    maintainers = with lib.maintainers; [ lockejan ];
     license.fullName = "MIT";
   };
 }) {};
