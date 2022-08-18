@@ -1161,6 +1161,40 @@ buildLuarocksPackage {
   };
 }) {};
 
+lua-pb = callPackage({ buildLuarocksPackage, luaOlder, luaAtLeast
+, fetchgit, lua, lpeg, luabitop, struct
+}:
+buildLuarocksPackage {
+  pname = "lua-pb";
+  version = "scm-0";
+  knownRockspec = (fetchurl {
+    url    = "mirror://luarocks/lua-pb-scm-0.rockspec";
+    sha256 = "0x8cnc3grg7sn4ghq65wx18fwfkcmqjclmqc0ncym4yxf7d92vla";
+  }).outPath;
+  src = fetchgit ( removeAttrs (builtins.fromJSON ''{
+  "url": "https://github.com/tgregory/lua-pb.git",
+  "rev": "1b4419d99889c38ea5eb6df46cbf24a3f602e2d1",
+  "date": "2014-09-30T10:34:43+08:00",
+  "path": "/nix/store/99dzx2jcz6s0n138yxpvz3vi8kbqb598-lua-pb",
+  "sha256": "06pwwi6rjg087qpyg4wsvj4xzrwr3iy94ypvjn4b0a7sg5myrqhq",
+  "fetchLFS": false,
+  "fetchSubmodules": true,
+  "deepClone": false,
+  "leaveDotGit": false
+}
+ '') ["date" "path"]) ;
+
+  disabled = with lua; (luaOlder "5.1");
+  propagatedBuildInputs = [ lua lpeg luabitop struct ];
+
+  meta = {
+    homepage = "https://github.com/Neopallium/lua-pb";
+    description = "Lua Protocol Buffers";
+    maintainers = with lib.maintainers; [ lockejan ];
+    license.fullName = "MIT";
+  };
+}) {};
+
 lua-protobuf = callPackage({ buildLuarocksPackage, luaOlder, luaAtLeast
 , fetchgit, lua
 }:
