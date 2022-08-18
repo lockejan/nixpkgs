@@ -448,6 +448,14 @@ with prev;
     '';
   });
 
+  struct = prev.struct.overrideAttrs(oa: {
+    # generate struct.so
+    preConfigure = ''
+      env MACOSX_DEPLOYMENT_TARGET=10.8 clang -O2 -fPIC -I/nix/store/mqxwi7kr0472lb30ivrwdc3w4c65ir5x-lua-5.1.5/inclue -c struct.c -o struct.o
+      env MACOSX_DEPLOYMENT_TARGET=10.8 clang -bundle -undefined dynamic_lookup -all_load -o struct.so struct.o
+    '';
+  });
+
   # TODO just while testing, remove afterwards
   # toVimPlugin should do it instead
   gitsigns-nvim = prev.gitsigns-nvim.overrideAttrs(oa: {
