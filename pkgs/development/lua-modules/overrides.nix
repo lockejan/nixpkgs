@@ -393,6 +393,13 @@ with prev;
     USE_SYSTEM_MPACK = "yes";
   });
 
+  pb = prev.pb.overrideAttrs(oa: {
+    # run make to generate struct.so
+    preConfigure = ''
+      make struct.so
+    '';
+  });
+
   rapidjson = prev.rapidjson.overrideAttrs(oa: {
     preBuild = ''
       sed -i '/set(CMAKE_CXX_FLAGS/d' CMakeLists.txt
