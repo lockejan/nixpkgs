@@ -2,13 +2,13 @@
 
 stdenvNoCC.mkDerivation rec {
   pname = "zsh-z";
-  version = "unstable-2021-02-15";
+  version = "unstable-2023-10-12";
 
   src = fetchFromGitHub {
     owner = "agkozak";
     repo = pname;
-    rev = "595c883abec4682929ffe05eb2d088dd18e97557";
-    sha256 = "sha256-HnwUWqzwavh/Qox+siOe5lwTp7PBdiYx+9M0NMNFx00=";
+    rev = "afaf2965b41fdc6ca66066e09382726aa0b6aa04";
+    sha256 = "sha256-FnGjp/VJLPR6FaODY0GtCwcsTYA4d6D8a6dMmNpXQ+g=";
   };
 
   strictDeps = true;
